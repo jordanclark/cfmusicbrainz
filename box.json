@@ -1,0 +1,39 @@
+{
+    "name":"cfmusicbrainz",
+    "slug":"cfmusicbrainz",
+    "version":"0.5.0",
+    "author":"Jordan Clark <jordanclark@gmail.com>",
+    "keywords":[
+        "musicbrainz",
+        "music brainz",
+        "music",
+        "api",
+        "rest"
+    ],
+    "shortDescription":"API client for musicbrainz.org",
+    "type":"modules",
+    "location":"jordanclark/cfmusicbrainz#v0.5.0",
+    "repository":{
+        "URL":"https://github.com/jordanclark/cfmusicbrainz.git",
+        "type":"GIT"
+    },
+    "homepage":"https://github.com/jordanclark/cfmusicbrainz",
+    "bugs":"https://github.com/jordanclark/cfmusicbrainz/issues",
+    "license":[
+        {
+            "type":"Apache-2.0",
+            "URL":"https://github.com/jordanclark/cfmusicbrainz/blob/master/LICENSE"
+        }
+    ],
+    "private":false,
+    "ignore":[
+        "**/.*",
+        "/test/",
+        "/tests/"
+    ],
+    "scripts":{
+        "postVersion":"package set location='jordanclark/cfmusicbrainz#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push --follow-tags"
+    }
+}
