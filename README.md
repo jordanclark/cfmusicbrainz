@@ -11,9 +11,13 @@ musicbrainz.org ColdFusion Rest API Client
 
 Initial API only includes limit functionality to search by artist, and lookup by artist id
 
-# Changes
-2019-05-29 Initial release
+## To Install
+Run the following from commandbox:
+`box install cfmusicbrainz`
 
-# API documentation
+## Changes
+2019-05-29 Open source release
+
+## API documentation
 https://musicbrainz.org/
 
