@@ -49,10 +49,10 @@ component {
 		// this.debugLog( out );
 		// throttle requests by sleeping the thread to prevent overloading api
 		if ( this.lastRequest > 0 && this.throttle > 0 ) {
-			wait= this.throttle - ( getTickCount() - this.lastRequest );
+			var wait= this.throttle - ( getTickCount() - this.lastRequest );
 			if ( wait > 0 ) {
 				this.debugLog( "Pausing for #wait#/ms" );
-				cfthread( duration=wait, action="sleep" );
+				sleep( wait );
 			}
 		}
 		cftimer( type="debug", label="brainz request" ) {
