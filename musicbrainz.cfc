@@ -41,6 +41,7 @@ component {
 		,	statusCode = 0
 		,	response = ""
 		,	requestUrl = this.apiUrl & arguments.path
+		,	delay= 0
 		};
 		arguments[ "fmt" ] = "json";
 		structDelete( arguments, "path" );
@@ -49,10 +50,10 @@ component {
 		// this.debugLog( out );
 		// throttle requests by sleeping the thread to prevent overloading api
 		if ( this.lastRequest > 0 && this.throttle > 0 ) {
-			var wait= this.throttle - ( getTickCount() - this.lastRequest );
-			if ( wait > 0 ) {
-				this.debugLog( "Pausing for #wait#/ms" );
-				sleep( wait );
+			out.delay= this.throttle - ( getTickCount() - this.lastRequest );
+			if ( out.delay > 0 ) {
+				this.debugLog( "Pausing for #out.delay#/ms" );
+				sleep( out.delay );
 			}
 		}
 		cftimer( type="debug", label="brainz request" ) {
