@@ -5,8 +5,9 @@ component {
 	,	required string apiUrl= "http://musicbrainz.org/ws"
 	,	numeric throttle= 200
 	,	numeric httpTimeOut= 60
-	,	boolean debug= ( request.debug ?: false )
+	,	boolean debug
 	) {
+		arguments.debug = ( arguments.debug ?: request.debug ?: false );
 		this.userAgent = arguments.userAgent;
 		this.apiUrl = arguments.apiUrl;
 		this.httpTimeOut = arguments.httpTimeOut;
@@ -25,7 +26,12 @@ component {
 				request.log( arguments.input );
 			}
 		} else if( this.debug ) {
-			cftrace( text=( isSimpleValue( arguments.input ) ? arguments.input : "" ), var=arguments.input, category="MusicBrainz", type="information" );
+			var info= ( isSimpleValue( arguments.input ) ? arguments.input : serializeJson( arguments.input ) );
+			cftrace(
+				var= "info"
+			,	category= "MusicBrainz"
+			,	type= "information"
+			);
 		}
 		return;
 	}
